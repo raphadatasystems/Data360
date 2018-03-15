@@ -7,22 +7,36 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ETLFramework_DB", "ETLFramework_DB\ETLFramework_DB.sqlproj", "{29C2358D-3D48-4715-95DE-73BFA975A1A1}"
 EndProject
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "ETLFramework", "ETLFramework_SSIS\ETLFramework.dtproj", "{2CA0802E-4930-43A0-BFA1-B143263B1B06}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Development|Any CPU = Development|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{CD46F132-0198-476C-93D0-4949970DED45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CD46F132-0198-476C-93D0-4949970DED45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD46F132-0198-476C-93D0-4949970DED45}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD46F132-0198-476C-93D0-4949970DED45}.Development|Any CPU.Build.0 = Debug|Any CPU
 		{CD46F132-0198-476C-93D0-4949970DED45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD46F132-0198-476C-93D0-4949970DED45}.Release|Any CPU.Build.0 = Release|Any CPU
 		{29C2358D-3D48-4715-95DE-73BFA975A1A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{29C2358D-3D48-4715-95DE-73BFA975A1A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29C2358D-3D48-4715-95DE-73BFA975A1A1}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{29C2358D-3D48-4715-95DE-73BFA975A1A1}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{29C2358D-3D48-4715-95DE-73BFA975A1A1}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{29C2358D-3D48-4715-95DE-73BFA975A1A1}.Development|Any CPU.Deploy.0 = Debug|Any CPU
 		{29C2358D-3D48-4715-95DE-73BFA975A1A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29C2358D-3D48-4715-95DE-73BFA975A1A1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{29C2358D-3D48-4715-95DE-73BFA975A1A1}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{2CA0802E-4930-43A0-BFA1-B143263B1B06}.Debug|Any CPU.ActiveCfg = Development
+		{2CA0802E-4930-43A0-BFA1-B143263B1B06}.Debug|Any CPU.Build.0 = Development
+		{2CA0802E-4930-43A0-BFA1-B143263B1B06}.Development|Any CPU.ActiveCfg = Development
+		{2CA0802E-4930-43A0-BFA1-B143263B1B06}.Development|Any CPU.Build.0 = Development
+		{2CA0802E-4930-43A0-BFA1-B143263B1B06}.Release|Any CPU.ActiveCfg = Development
+		{2CA0802E-4930-43A0-BFA1-B143263B1B06}.Release|Any CPU.Build.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
