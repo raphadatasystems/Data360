@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>ETLFramework_DB</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{29c2358d-3d48-4715-95de-73bfa975a1a1}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>ETLFramework_DB</RootNamespace>
+    <AssemblyName>ETLFramework_DB</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="config\" />
+    <Folder Include="config\Tables\" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="log\" />
+    <Folder Include="log\Tables\" />
+    <Folder Include="config\Stored Procedures\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="log\Stored Procedures\" />
+    <Folder Include="reports\" />
+    <Folder Include="reports\Stored Procedures\" />
+    <Folder Include="Security\" />
+    <Folder Include="Scripts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="config\Tables\Application.sql" />
+    <Build Include="config\Tables\ApplicationSchedule.sql" />
+    <Build Include="config\Tables\FrameworkCodes.sql" />
+    <Build Include="config\Tables\Package.sql" />
+    <Build Include="config\Tables\Schedule.sql" />
+    <Build Include="config\Tables\SSISConfiguration.sql" />
+    <Build Include="config\Tables\Task.sql" />
+    <Build Include="config\Tables\TaskDateParameter.sql" />
+    <Build Include="dbo\Tables\ApplicationExecutionInstance.sql" />
+    <Build Include="dbo\Tables\TaskExecutionInstance.sql" />
+    <Build Include="log\Tables\ApplicationExecutionError.sql" />
+    <Build Include="log\Tables\TaskExecutionError.sql" />
+    <Build Include="log\Tables\TaskExecutionVariableLog.sql" />
+    <Build Include="config\Stored Procedures\CalculateNextScheduleRunDate.sql" />
+    <Build Include="config\Stored Procedures\ResetAllLogs.sql" />
+    <Build Include="config\Stored Procedures\UpdateApplicationSchedule.sql" />
+    <Build Include="dbo\Stored Procedures\AbortApplicationExecution.sql" />
+    <Build Include="dbo\Stored Procedures\ApplicationExecutionErrored.sql" />
+    <Build Include="dbo\Stored Procedures\CheckTaskPrecendent.sql" />
+    <Build Include="dbo\Stored Procedures\CompleteApplicationExecutionInstance.sql" />
+    <Build Include="dbo\Stored Procedures\CompleteTaskExecutionInstance.sql" />
+    <Build Include="dbo\Stored Procedures\GetScheduledApplications.sql" />
+    <Build Include="dbo\Stored Procedures\GetTaskDateParameter.sql" />
+    <Build Include="dbo\Stored Procedures\GetTaskDetail.sql" />
+    <Build Include="dbo\Stored Procedures\GetTasksForChannel.sql" />
+    <Build Include="dbo\Stored Procedures\GetValidationScreenID.sql" />
+    <Build Include="dbo\Stored Procedures\InitializeScheduledApplications.sql" />
+    <Build Include="dbo\Stored Procedures\InitializeTasks.sql" />
+    <Build Include="dbo\Stored Procedures\IsApplicationAborted.sql" />
+    <Build Include="dbo\Stored Procedures\IsApplicationRunning.sql" />
+    <Build Include="dbo\Stored Procedures\IsParallelChannelEnabled.sql" />
+    <Build Include="dbo\Stored Procedures\LaunchApplicationExecutionInstance.sql" />
+    <Build Include="dbo\Stored Procedures\LaunchTaskExecutionInstance.sql" />
+    <Build Include="dbo\Stored Procedures\ResetTaskDateParam.sql" />
+    <Build Include="dbo\Stored Procedures\RethrowError.sql" />
+    <Build Include="dbo\Stored Procedures\SetPackageExecutionID.sql" />
+    <Build Include="dbo\Stored Procedures\testme.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateTaskExecutionStatus.sql" />
+    <Build Include="log\Stored Procedures\LogTaskExecutionError.sql" />
+    <Build Include="log\Stored Procedures\LogTaskRowCount.sql" />
+    <Build Include="log\Stored Procedures\LogTaskVariableChange.sql" />
+    <Build Include="log\Stored Procedures\TaskExecutionInstanceHeartBeat.sql" />
+    <Build Include="reports\Stored Procedures\GetApplicationExecutionOverview.sql" />
+    <Build Include="reports\Stored Procedures\GetApplicationHistory.sql" />
+    <Build Include="reports\Stored Procedures\GetApplicationsOverview.sql" />
+    <Build Include="reports\Stored Procedures\GetTaskHistory.sql" />
+    <Build Include="Security\audit.sql" />
+    <Build Include="Security\config.sql" />
+    <Build Include="Security\log.sql" />
+    <Build Include="Security\reports.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ETLFramework_DB.publish.xml" />
+    <PostDeploy Include="Scripts\SeedData.sql" />
+  </ItemGroup>
+</Project>
