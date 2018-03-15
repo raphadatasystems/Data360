@@ -1,0 +1,99 @@
+https://www.youtube.com/watch?v=QbBmYMaQFec
+
+/*
+* PRE-LOAD
+*/
+
+-- Step 1: Drop Index
+
+ALTER TABLE [config].[Task] DROP CONSTRAINT [PK_Task]
+GO
+
+ALTER TABLE [config].[FrameworkCodes] DROP CONSTRAINT [PK_FrameworkCodes]
+GO
+
+
+-- Step 2: Drop FOREIGN KEYS
+
+ALTER TABLE [config].[TaskDateParameter] DROP CONSTRAINT [fk_tsk_id]
+GO
+
+ALTER TABLE [config].[Task] DROP CONSTRAINT [FK_Task_Application]
+GO
+
+ALTER TABLE [config].[Task] DROP CONSTRAINT [FK_Task_Package]
+GO
+
+ALTER TABLE [config].[Task] DROP CONSTRAINT [FK_Task_Task]
+GO
+
+ALTER TABLE [config].[ApplicationSchedule] DROP CONSTRAINT [FK_ApplicationSchedule_Application]
+GO
+
+ALTER TABLE [config].[ApplicationSchedule] DROP CONSTRAINT [FK_ApplicationSchedule_Schedule]
+GO
+
+ALTER TABLE [config].[FrameworkCodes] DROP CONSTRAINT [PK_FrameworkCodes]
+GO
+
+
+CREATE PRIMARY KEYS
+
+--FrameworkCodes
+ALTER TABLE [config].[FrameworkCodes] ADD  CONSTRAINT [PK_FrameworkCodes] PRIMARY KEY CLUSTERED 
+(
+	[FrameworkCode] ASC,
+	[CodeType] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+
+ALTER TABLE [config].[Task] ADD  CONSTRAINT [PK_Task] PRIMARY KEY CLUSTERED ([TaskID] ASC)
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+
+
+CREATE FOREIGN KEYS
+
+--FrameworkCodes
+
+
+--ApplicationSchedule
+ALTER TABLE [config].[ApplicationSchedule]  WITH CHECK ADD  CONSTRAINT [FK_ApplicationSchedule_Application] FOREIGN KEY([ApplicationID])
+REFERENCES [config].[Application] ([ApplicationID])
+GO
+
+ALTER TABLE [config].[ApplicationSchedule]  WITH CHECK ADD  CONSTRAINT [FK_ApplicationSchedule_Schedule] FOREIGN KEY([ScheduleID])
+REFERENCES [config].[Schedule] ([ScheduleID])
+GO
+
+--Task Table FKs
+ALTER TABLE [config].[Task]  WITH CHECK ADD  CONSTRAINT [FK_Task_Task] FOREIGN KEY([PrecendentTaskID])
+REFERENCES [config].[Task] ([TaskID])
+GO
+
+ALTER TABLE [config].[Task]  WITH CHECK ADD  CONSTRAINT [FK_Task_Package] FOREIGN KEY([PackageID])
+REFERENCES [config].[Package] ([PackageID])
+GO
+
+ALTER TABLE [config].[Task]  WITH CHECK ADD  CONSTRAINT [FK_Task_Application] FOREIGN KEY([ApplicationID])
+REFERENCES [config].[Application] ([ApplicationID])
+GO
+
+--TaskDateParameter Table FK
+ALTER TABLE [config].[TaskDateParameter]  WITH CHECK ADD  CONSTRAINT [fk_tsk_id] FOREIGN KEY([TaskID])
+REFERENCES [config].[Task] ([TaskID])
+GO
+
+
+
+
+CREATE INDEX
+
+
+
+ALTER TABLE [config].[FrameworkCodes] ADD  CONSTRAINT [PK_FrameworkCodes] PRIMARY KEY CLUSTERED 
+(
+	[FrameworkCode] ASC,
+	[CodeType] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
